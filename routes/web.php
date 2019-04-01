@@ -26,3 +26,10 @@ Route::get('/users/{user}/delete', 'Admin\UsersController@delete')->name('users.
 Route::get('/users/{user}/changestatus', 'Admin\UsersController@changestatus')->name('users.changestatus');
 Route::any('/users/{user}/changepassword', 'Admin\UsersController@changepassword')->name('users.changepassword');
 // USERS MODUL END
+
+
+// PAGES MODUL START
+Route::get('/pages', 'Admin\PagesController@index')->name('pages.index');
+Route::get('/pages/create', 'Admin\PagesController@create')->name('pages.create');
+Route::post('/pages/store', 'Admin\PagesController@store')->name('pages.store');
+// PAGES MODUL END
