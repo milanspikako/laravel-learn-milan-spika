@@ -15,6 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel learn'),
     'seo-separator' => '/',
+    'seo-image-prefiks' => 'kursevi-programiranja-beograd-',
 
     /*
     |--------------------------------------------------------------------------
@@ -148,6 +149,7 @@ return [
         Illuminate\Cookie\CookieServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         Illuminate\Filesystem\FilesystemServiceProvider::class,
         Illuminate\Foundation\Providers\FoundationServiceProvider::class,
         Illuminate\Hashing\HashServiceProvider::class,
@@ -205,6 +207,7 @@ return [
         'DB' => Illuminate\Support\Facades\DB::class,
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
         'Event' => Illuminate\Support\Facades\Event::class,
+        'Image' => Intervention\Image\Facades\Image::class,
         'File' => Illuminate\Support\Facades\File::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
