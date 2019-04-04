@@ -14,7 +14,18 @@
 <h1 class="h3 mb-4 text-gray-800">{{ __('All pages') }}</h1>
 
 @include('admin.layout.partials.messages')
+@if(!empty($page->id))
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
 
+   
+    <li class="breadcrumb-item"><a href="{{ route('pages.index') }}">Pages</a></li>
+     
+
+    <li class="breadcrumb-item active" aria-current="page">{{ isset($page) ? $page->title : "" }}</li>
+  </ol>
+</nav>
+@endif
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
@@ -24,8 +35,9 @@
             <table class="table table-bordered" id="rows" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Image</th>
                         <th>Title</th>
+                        <th>Image</th>
+                        
                         <th>Active</th>
                         <th>Options</th>
                     </tr>
@@ -34,8 +46,9 @@
                     @if(count($rows) > 0)
                         @foreach($rows as $value)
                             <tr>
+                                <td><a href="{{ route('pages.index',['page' => $value]) }}" >{{ $value->title }}</a></td>
                                 <td>{{ $value->image }}</td>
-                                <td>{{ $value->title }}</td>
+                               
                                 <td class="text-center text-white">
                                     @if($value->active == 1)
                                     <a href='{{ route("pages.changestatus", ["page" => $value->id]) }}' class='btn btn-sm btn-success'>{{ __('Active')}}</a>
@@ -90,9 +103,12 @@ $(document).ready(function() {
   $('#rows').DataTable({
         "order": [[ 1, "asc" ]],
         "columnDefs": [
-            { "orderable": false, "targets": [0, 3] },
-            { "searchable": false, "targets": [0, 2, 3] }
+            { "orderable": false, "targets": [1, 3] },
+            { "searchable": false, "targets": [1, 2, 3] },
+            { "width": "25%", "targets": [0,1,2,3] },
+            
         ]
+          
   });
 });
 
